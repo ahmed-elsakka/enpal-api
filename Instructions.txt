@@ -1,0 +1,14 @@
+API server starting instructions
+
+To start the API server (make sure NodeJS is installed):
+1. go to /api folder
+2. open the command line from this folder and execute this command: node index.js
+3. if the server started successfully you should see this message on the console: "The endpoint is executing at http://localhost:3000/calendar/query"
+
+
+Notes about the solution
+
+Added the following indexes to the database (init.sql):
+1. B-tree indexes on sales_manager_id, booked and date_range to improve the queries on slots table since the solution query involves querying by these columns
+2. GIN indexes on languages, products and ratings arrays on sales_managers table to improve querying managers who has specific languages, products or ratings (used GIN since it's the suitable index for array values)
+3. View available_slots that contains the non-overlapping slots for the sales managers
